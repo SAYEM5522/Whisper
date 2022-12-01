@@ -1,5 +1,6 @@
-{ "name": "whisper_web",
- "version": "0.0.0",
+{
+  "name": "whisper_web",
+  "version": "0.0.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -7,9 +8,13 @@
     "start": "next start"
   },
   "dependencies": {
+    "framer-motion": "^7.6.15",
     "next": "latest",
+    "next-themes": "^0.2.1",
+    "prettier-plugin-tailwindcss": "^0.2.0",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "react-icons": "^4.7.1"
   },
   "devDependencies": {
     "@types/node": "18.11.3",
