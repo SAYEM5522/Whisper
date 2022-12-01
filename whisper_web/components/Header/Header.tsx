@@ -6,15 +6,15 @@ import { useTheme } from 'next-themes'
 const HeaderItem=[
   {
     id:1,
-    name:"RecordAudio"
+    name:"Record Audio"
   },
   {
     id:2,
-    name:"AudioToText"
+    name:"Audio To Text"
   },
   {
     id:3,
-    name:"VideoToText"
+    name:"Video To Text"
   }
 ]
 
@@ -33,25 +33,27 @@ const Header = () => {
       <div onClick={ModeChange}>
       {
         mode?
-        <HiOutlineMoon size={25} className="ml-5 mt-1 cursor-pointer"/>:
-        <BsSun  size={25} className="ml-5 mt-1 cursor-pointer"/>
+        <HiOutlineMoon size={24} className="ml-5 mt-2 cursor-pointer"/>:
+        <BsSun  size={24} className="ml-5 mt-2 cursor-pointer"/>
 
       }
       </div>
       </div>
     <div 
-    className='max-w-full flex items-center'
+    className={`flex items-center`}
     >
-     
+     <div  className={` flex items-center `}>
     {
       HeaderItem.map((item,index)=>{
         return(
-          <div key={index} className={`${index===acttiveIndex ?'border-x border-t rounded-[3px]':'border-b hover:bg-[#EEEEEE] hover:rounded-sm '} cursor-pointer gray-400 px-4 py-3`}>
-            <p onClick={()=>setACtiveIndex(index)} className={`${acttiveIndex===index?'text-black dark:text-white':'text-[#A43333]'} font-semibold `}>{item.name}</p>
+          <div key={index} className={`${index===acttiveIndex ?'border-x border-t rounded-[3px]':'border-b hover:bg-[#EEEEEE] hover:rounded-sm '} cursor-pointer gray-400 px-5 py-3 `}>
+            <p onClick={()=>setACtiveIndex(index)} className={`${acttiveIndex===index?'text-black dark:text-white':'text-[#A43333] dark:text-[#f70511]'} font-semibold `}>{item.name}</p>
           </div>
         )
       })
     }
+    </div>
+    <div className='border-b w-[590px] mt-12'/>
     </div>
     </div>
   )
