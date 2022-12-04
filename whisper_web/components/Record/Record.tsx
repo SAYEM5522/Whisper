@@ -2,7 +2,9 @@ import React from 'react'
 
 const Record = () => {
   return (
-    <div>Record</div>
+    <div className='flex-1 bg-black mt-2'>
+       <p>hello</p>
+    </div>
   )
 }
 

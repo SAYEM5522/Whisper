@@ -33,7 +33,10 @@ const Header = () => {
     setACtiveIndex(index)
     if(index===0){
       return(
+        <div className='absolute top-0 left-0'>
         <Record/>
+
+        </div>
       )
     }
     else if(index===1){
@@ -48,6 +51,32 @@ const Header = () => {
     }
 
   },[acttiveIndex])
+  const HeaderIdentification=()=>{
+    if(acttiveIndex===0){
+      return(
+        <div>
+        <Record/>
+        </div>
+       )
+       
+    
+  }
+  else if(acttiveIndex===1){
+    return(
+      <div>
+        <AudioToText/>
+      </div>
+    )
+  }
+  else{
+    return(
+      <div>
+        <VideoToAudio/>
+      </div>
+    )
+  }
+  return null
+}
   return (
     <div>
       <div className='flex items-center'>
@@ -77,6 +106,9 @@ const Header = () => {
     </div>
     <div className='border-b w-[580px] mt-12'/>
     </div>
+    <div>
+      <HeaderIdentification/>
+      </div>
     </div>
   )
 }
