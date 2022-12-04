@@ -31,24 +31,6 @@ const Header = () => {
   },[mode,theme])
   const ItemSelect=useCallback((index:number)=>{
     setACtiveIndex(index)
-    if(index===0){
-      return(
-        <div className='absolute top-0 left-0'>
-        <Record/>
-
-        </div>
-      )
-    }
-    else if(index===1){
-      return(
-        <AudioToText/>
-      )
-    }
-    else{
-      return(
-        <VideoToAudio/>
-      )
-    }
 
   },[acttiveIndex])
   const HeaderIdentification=()=>{
