@@ -1,8 +1,13 @@
 import React from 'react'
+import ChoiceFile from './ChoiceFile'
+import LanguageList from './LanguageList'
 
 const AudioToText = () => {
   return (
-    <div>AudioToText</div>
+    <div className='flex items-center justify-between'>
+      <ChoiceFile/>
+      <LanguageList/>
+    </div>
   )
 }
 

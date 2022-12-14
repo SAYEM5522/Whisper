@@ -7,7 +7,12 @@ module.exports = {
     './app/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
-    extend: {},
+    extend: {
+      screens: {
+        'lg': '992px',
+        // => @media (min-width: 992px) { ... }
+      },
+    },
   },
   plugins: [],
 }
