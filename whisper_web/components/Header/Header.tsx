@@ -80,7 +80,7 @@ const Header = () => {
       HeaderItem.map((item,index)=>{
         return(
           <div key={index} className={`${index===acttiveIndex ?'border-x border-t rounded-[3px]':'border-b hover:bg-[#EEEEEE] hover:rounded-sm '} cursor-pointer gray-400 px-5 py-1 `}>
-            <p onClick={()=>ItemSelect(index)} className={`${acttiveIndex===index?'text-black dark:text-white':'text-[#A43333] dark:text-[#f70511]'} font-semibold `}>{item.name}</p>
+            <p onClick={()=>ItemSelect(index)} className={`${acttiveIndex===index?'text-black dark:text-white':'text-[#A07855FF] dark:text-[#f70511]'} font-semibold `}>{item.name}</p>
           </div>
         )
       })

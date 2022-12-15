@@ -2,7 +2,7 @@
 import React, { useCallback, useState } from 'react'
 import {HiOutlineChevronDown} from "react-icons/hi"
 import { useDispatch, useSelector } from 'react-redux';
-import { selectItem, setItemSelection } from '../../features/AudioSlice';
+import {  selectRecordItem, setRecordItem } from '../../features/AudioSlice';
 
 const ItemList=[
   {
@@ -18,9 +18,9 @@ const ItemList=[
     name:"Detect Language"
   },
 ]
-const SelectItem = () => {
+const SelectItem2 = () => {
    const dispatch=useDispatch()
-   const selectedItem=useSelector(selectItem)
+   const selectedRecord=useSelector(selectRecordItem)
    const [open,setOpen]=useState<boolean>(false)
    const PopUp=useCallback(()=>{
     setOpen(!open)
@@ -28,7 +28,7 @@ const SelectItem = () => {
   return (
     <div className='relative'>
      <div onClick={PopUp} className=' h-9 w-36 border flex items-center p-2 justify-evenly cursor-pointer ml-2 rounded-md'>
-      <p className='text-sm'>{selectedItem}</p>
+      <p className='text-sm'>{selectedRecord}</p>
       <HiOutlineChevronDown/>
 
      </div>
@@ -40,8 +40,8 @@ const SelectItem = () => {
  ItemList.map((item,index)=>{
   return(
     <div onClick={()=>dispatch(
-      setItemSelection({
-      itemSelection:item.name
+      setRecordItem({
+        RecordItem:item.name
     }))} className='flex items-center justify-center p-1 hover:bg-gray-200'>
       <p className='text-sm text-black font-medium '>{item.name}</p>
     </div>
@@ -57,4 +57,4 @@ null
   )
 }
 
-export default SelectItem
+export default SelectItem2
