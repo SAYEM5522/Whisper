@@ -43,7 +43,7 @@ const SelectItem2 = () => {
       setRecordItem({
         RecordItem:item.name
     }))} className='flex items-center justify-center p-1 hover:bg-gray-200'>
-      <p className='text-sm text-black font-medium '>{item.name}</p>
+      <p key={index} className='text-sm text-black font-medium '>{item.name}</p>
     </div>
   )
  })
