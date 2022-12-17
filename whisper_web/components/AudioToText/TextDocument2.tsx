@@ -13,7 +13,10 @@ const TextDocument2 = () => {
         loading?
         <p className='p-3 cursor-pointer font-serif text-base 
         font-normal first-letter:text-4xl first-letter:text-black  first-letter:mr-1  '></p>:
-        <ScaleLoader color="#36d7b7" />
+        <div className='flex items-center justify-center mt-[130px]'>
+        <ScaleLoader color="#000" />
+
+        </div>
         
        
 

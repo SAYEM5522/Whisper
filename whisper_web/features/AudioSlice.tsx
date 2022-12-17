@@ -3,13 +3,14 @@ import { createSlice } from '@reduxjs/toolkit'
 const initialState = {
   itemSelection:"Transcribe",
   RecordItem:"Transcribe",
-  fileLoading:false,
+  fileLoading:true,
   RecordLoading:false,
   fileData:{
     Text:"",
     language:""
   } as any,
   VideoItem:"Transcribe",
+  fileChoice:false
 
 }
 
@@ -37,6 +38,9 @@ const AudioSlice = createSlice({
         setVideoItem:(state,action)=>{
           state.VideoItem=action.payload.VideoItem
         },
+        setFileChoice:(state,action)=>{
+          state.fileChoice=action.payload.fileChoice
+        },
 
   }
 });
@@ -47,7 +51,8 @@ export const {
   setFileLoading,
   setRecordLoading,
   setFileData,
-  setVideoItem
+  setVideoItem,
+  setFileChoice
 } = AudioSlice.actions
 
 export const selectItem=(state:any)=>state.Audio.itemSelection
@@ -56,6 +61,8 @@ export const selectFileLoading=(state:any)=>state.Audio.fileLoading
 export const selectRecordLoading=(state:any)=>state.Audio.RecordLoading
 export const selectFileData=(state:any)=>state.Audio.fileData
 export const selectVideoItem=(state:any)=>state.Audio.VideoItem
+export const selectFileChoile=(state:any)=>state.Audio.fileChoice
+
 
 
 

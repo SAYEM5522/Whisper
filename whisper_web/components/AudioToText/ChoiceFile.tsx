@@ -1,6 +1,6 @@
 import { ChangeEvent, useState,useCallback,useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectFileData, selectItem, setFileData, setFileLoading } from '../../features/AudioSlice';
+import { selectFileChoile, selectFileData, selectItem, setFileChoice, setFileData, setFileLoading } from '../../features/AudioSlice';
 
 function ChoiceFile() {
   const [file, setFile] = useState<File>();
@@ -8,11 +8,25 @@ function ChoiceFile() {
   const selectedItem=useSelector(selectItem)
   const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
     if (e.target.files) {
+    
       setFile(e.target.files[0]);
     }
   };
  
   const handleUploadClick =() => {
+    dispatch(
+      setFileChoice({
+        fileChoice:true
+  },
+  ),
+  
+  
+    )
+    dispatch(
+      setFileLoading({
+        fileLoading:true
+      })
+    )
     if (!file) {
       return;
     }
@@ -22,7 +36,8 @@ function ChoiceFile() {
     })
       .then((res) => res.json())
       .then((data) =>{
-        console.log(data)
+
+          
        dispatch(
         setFileData(
           {
@@ -33,9 +48,15 @@ function ChoiceFile() {
        )
        dispatch(
         setFileLoading({
-          fileLoading:true
+          fileLoading:false
+        })
+       ),
+       dispatch(
+        setFileChoice({
+          fileChoice:false
         })
        )
+       
   })
       .catch((err) => console.error(err));
   }
@@ -52,7 +73,7 @@ function ChoiceFile() {
         <p>No File Selected</p>
       }
       </span>
-      <button className='absolute bottom-1 right-[7.5rem]  bg-gray-100 rounded-md px-3 ' onClick={handleUploadClick} >Upload</button>
+      <button className='absolute bottom-1 right-[7.5rem]  bg-gray-100 rounded-md px-3 text-[#A07855FF] ' onClick={handleUploadClick} >Upload</button>
       </div>
       
       
