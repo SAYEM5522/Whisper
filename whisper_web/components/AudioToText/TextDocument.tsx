@@ -5,6 +5,7 @@ import { selectFileChoile, selectFileData, selectFileLoading } from '../../featu
 import useCopyToClipboard from './useCopyToClipboard';
 import {BiCopy} from "react-icons/bi"
 import {IoMdCheckmark} from "react-icons/io"
+import { LANGUAGES } from './Language';
 const TextDocument = () => {
   const [value, copy] = useCopyToClipboard()
   const loading=useSelector(selectFileLoading)
@@ -17,8 +18,19 @@ const TextDocument = () => {
   return (
     <div className=' h-[300px] w-[36rem]  border rounded-lg relative'>
       {
+        LANGUAGES.map((item,index)=>{
+          if (item.code===fileTextInfo.language){
+            return(
+              <p className='text-center font-serif text-md first-letter:capitalize'>Detected Language: {item.language?.toUpperCase()}</p>
+            )
+           }
+           
+        })
+      }
+
+      {
         value?
-      <IoMdCheckmark onClick={TextCopy} className='absolute right-2 top-2 bottom-2 cursor-pointer ' color='green' size={26}/>
+      <IoMdCheckmark className='absolute right-2 top-2 bottom-2 cursor-pointer ' color='green' size={26}/>
          :
          <BiCopy onClick={TextCopy} className='absolute right-2 top-2 bottom-2 cursor-pointer ' size={26}/>
 

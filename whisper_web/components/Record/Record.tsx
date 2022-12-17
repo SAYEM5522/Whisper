@@ -4,8 +4,11 @@ import {BsMic} from "react-icons/bs"
 import TextDocument2 from '../AudioToText/TextDocument2'
 import MicRecorder from 'mic-recorder-to-mp3';
 import SelectItem2 from '../AudioToText/SelectItem2'
+import { useDispatch, useSelector } from 'react-redux';
+import { selectRecordItem, setAudioChoice, setAudioLoading, setRecordData } from '../../features/AudioSlice';
 const Record = () => {
 const[record,setRecord]=useState<boolean>(false)
+const AudioItem=useSelector(selectRecordItem)
   const openRecord=()=>{
   setRecord(true)
   }
@@ -18,6 +21,9 @@ const[record,setRecord]=useState<boolean>(false)
   //  isBlocked: false,
   })
   const [file, setFile] = useState<File>();
+  
+  const dispatch=useDispatch()
+  
 
  const start=()=>{  recorder.start().then(() => {
     
@@ -46,15 +52,45 @@ const[record,setRecord]=useState<boolean>(false)
 });}
 console.log(file)
 const Generate=()=>{
+  dispatch(
+    setAudioChoice({
+      AudioChoice:true
+},
+),
+
+  )
+  dispatch(
+    setAudioLoading({
+      AudioLoading:true
+    })
+  )
   if(file===null){
     return null
   }
-  fetch('http://127.0.0.1:5000/translate', {
+  fetch(`http://127.0.0.1:5000/${AudioItem}`, {
     method: 'POST',
     body:file
   })
     .then((res) => res.json())
-    .then((data) => console.log(data))
+    .then((data) => {
+   dispatch(
+    setRecordData({
+      Text:data.Text,
+      language:data.language
+    })
+   ),
+   dispatch(
+    setAudioLoading({
+      AudioLoading:false
+    })
+   ),
+   dispatch(
+    setAudioChoice({
+      AudioChoice:false
+    })
+   )
+    }
+    )
     .catch((err) => console.error(err));
 }
 

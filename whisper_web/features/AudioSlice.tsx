@@ -18,6 +18,12 @@ const initialState = {
     Text:"",
     language:""
   } as any,
+  AudioChoice:false,
+  AudioLoading:true,
+  RecordData:{
+    Text:"",
+    language:""
+  } as any,
 }
 
 const AudioSlice = createSlice({
@@ -62,6 +68,17 @@ const AudioSlice = createSlice({
               state.videoData.language=action.payload.language
       
               },
+              setAudioChoice:(state,action)=>{
+                state.AudioChoice=action.payload.AudioChoice
+              },
+              setAudioLoading:(state,action)=>{
+                state.AudioLoading=action.payload.AudioLoading
+                },
+                setRecordData:(state,action)=>{
+                  state.RecordData.Text=action.payload.Text,
+                  state.RecordData.language=action.payload.language
+          
+                  },
 
   }
 });
@@ -77,7 +94,10 @@ export const {
   setVideoChoice,
   setVideoLoading,
   setWarningIndicator,
-  setVideoData
+  setVideoData,
+  setAudioChoice,
+  setAudioLoading,
+  setRecordData
 } = AudioSlice.actions
 
 export const selectItem=(state:any)=>state.Audio.itemSelection
@@ -91,6 +111,13 @@ export const selectVideoChoile=(state:any)=>state.Audio.VideoChoice
 export const selectVideoLoading=(state:any)=>state.Audio.VideoLoading
 export const selectWarningIndicator=(state:any)=>state.Audio.WarningIndicator
 export const selectVideoData=(state:any)=>state.Audio.videoData
+export const selectAudioChoile=(state:any)=>state.Audio.AudioChoice
+export const selectAudioLoading=(state:any)=>state.Audio.AudioLoading
+export const selectRecordData=(state:any)=>state.Audio.RecordData
+
+
+
+
 
 
 
