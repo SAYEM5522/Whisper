@@ -12,9 +12,12 @@ const initialState = {
   VideoItem:"Transcribe",
   fileChoice:false,
   VideoChoice:false,
-  VideoLoading:true
-
-
+  VideoLoading:true,
+  WarningIndicator:false,
+  videoData:{
+    Text:"",
+    language:""
+  } as any,
 }
 
 const AudioSlice = createSlice({
@@ -50,6 +53,15 @@ const AudioSlice = createSlice({
         setVideoLoading:(state,action)=>{
           state.VideoLoading=action.payload.VideoLoading
           },
+          
+          setWarningIndicator:(state,action)=>{
+            state.WarningIndicator=action.payload.WarningIndicator
+            },
+            setVideoData:(state,action)=>{
+              state.videoData.Text=action.payload.Text,
+              state.videoData.language=action.payload.language
+      
+              },
 
   }
 });
@@ -63,7 +75,9 @@ export const {
   setVideoItem,
   setFileChoice,
   setVideoChoice,
-  setVideoLoading
+  setVideoLoading,
+  setWarningIndicator,
+  setVideoData
 } = AudioSlice.actions
 
 export const selectItem=(state:any)=>state.Audio.itemSelection
@@ -75,6 +89,10 @@ export const selectVideoItem=(state:any)=>state.Audio.VideoItem
 export const selectFileChoile=(state:any)=>state.Audio.fileChoice
 export const selectVideoChoile=(state:any)=>state.Audio.VideoChoice
 export const selectVideoLoading=(state:any)=>state.Audio.VideoLoading
+export const selectWarningIndicator=(state:any)=>state.Audio.WarningIndicator
+export const selectVideoData=(state:any)=>state.Audio.videoData
+
+
 
 
 

@@ -2,13 +2,27 @@ import React,{useEffect} from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { ScaleLoader } from 'react-spinners';
 import { selectFileChoile, selectFileData, selectFileLoading } from '../../features/AudioSlice';
-
+import useCopyToClipboard from './useCopyToClipboard';
+import {BiCopy} from "react-icons/bi"
+import {IoMdCheckmark} from "react-icons/io"
 const TextDocument = () => {
+  const [value, copy] = useCopyToClipboard()
   const loading=useSelector(selectFileLoading)
   const fileTextInfo=useSelector(selectFileData)
   const file=useSelector(selectFileChoile)
+  const TextCopy=()=>{
+    copy(fileTextInfo.Text)
+  }
+
   return (
-    <div className=' h-[300px] w-[36rem] border rounded-lg'>
+    <div className=' h-[300px] w-[36rem]  border rounded-lg relative'>
+      {
+        value?
+      <IoMdCheckmark onClick={TextCopy} className='absolute right-2 top-2 bottom-2 cursor-pointer ' color='green' size={26}/>
+         :
+         <BiCopy onClick={TextCopy} className='absolute right-2 top-2 bottom-2 cursor-pointer ' size={26}/>
+
+      }
       {
         loading && file?
         <div className='flex items-center justify-center mt-[130px]'>

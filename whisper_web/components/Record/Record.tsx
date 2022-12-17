@@ -46,6 +46,9 @@ const[record,setRecord]=useState<boolean>(false)
 });}
 console.log(file)
 const Generate=()=>{
+  if(file===null){
+    return null
+  }
   fetch('http://127.0.0.1:5000/translate', {
     method: 'POST',
     body:file
@@ -60,9 +63,9 @@ const Generate=()=>{
     <div className='flex flex-1 relative  justify-between'>
       {
         record?
-      <div>
-      <p onClick={start}>start</p>
-      <p onClick={stop}>stop</p>
+      <div className='flex justify-center w-full'>
+      <p onClick={stop} className=' bg-[#A07855FF] h-8 w-20 rounded-md text-white text-center mt-2' >Stop</p>
+      <BsMic  onClick={start} color={"red"} size={30} className='ml-auto cursor-pointer mr-11 mt-2 '/>
       </div>
       :
    <div className='flex items-center justify-center mt-3 p-4 h-14 bg-white w-full rounded-lg mr-8 shadow-lg shadow-gray-300 border '>
@@ -71,9 +74,13 @@ const Generate=()=>{
     </div>
 
       }
-      <p onClick={Generate}>generate</p>
+      <div className='absolute left-0 top-[75px] '>
+      <audio className='w-[47rem]' src={audioR.blobURL} controls />
+      </div>
+      <button className='absolute left-2 top-36 p-1 -mt-2 bg-black h-8 w-20 rounded-md text-white' onClick={Generate}>generate</button>
+
     
-    <div className='absolute left-1 top-28 flex'>
+    <div className='absolute left-1 top-44 flex'>
         <TextDocument2/>
         <SelectItem2/>
     </div>

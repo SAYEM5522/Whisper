@@ -5,6 +5,9 @@ import { useTheme } from 'next-themes'
 import Record from '../Record/Record'
 import VideoToAudio from '../VideoToText/VideoToText'
 import AudioToText from '../AudioToText/AudioToText'
+import WarningVideo from '../AudioToText/WarningVideo'
+import { useSelector } from 'react-redux'
+import { selectVideoChoile, selectVideoLoading, selectWarningIndicator } from '../../features/AudioSlice'
 
 const HeaderItem=[
   {
@@ -25,6 +28,7 @@ const Header = () => {
   const [mode,setMode]=useState(false)
   const { theme, setTheme } = useTheme()
   const [acttiveIndex,setACtiveIndex]=useState(0)
+  const videoLoading=useSelector(selectWarningIndicator)
   const ModeChange=useCallback(()=>{
     setMode(!mode)
     setTheme(theme === 'light' ? 'dark' : 'light')
@@ -59,9 +63,19 @@ const Header = () => {
   }
   return null
 }
+
   return (
-    <div>
+    <div className=''>
+      {
+     videoLoading?
+     <div className='-mt-36'>
+     <WarningVideo/>
+   </div>:
+   null
+      }
+       
       <div className='flex items-center'>
+      
       <h2 className='font-semibold italic text-3xl py-3'>Whisper</h2>
       <div onClick={ModeChange}>
       {
