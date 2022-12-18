@@ -11,3 +11,11 @@ Video to Text :
 The system allows users to import video files and convert it to audio so that it can be prepared for translation or transcription.  
  Podcast to Text
  The system automatically detects the language of the podcast and allow user to translate or transcribe. 
+Functional requirements:
+The softwate should allow user to record their voice.
+The software must implement multilingual speech transcription.
+The softwate should translate any language to English.
+The softwate must detect the spoken Language.
+The softwate must identify the voice activity.
+The softwate should be able to convert video to audio.
+The softwate must show details of supporting language.
