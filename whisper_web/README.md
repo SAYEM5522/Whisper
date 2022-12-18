@@ -19,3 +19,13 @@ The softwate must detect the spoken Language.
 The softwate must identify the voice activity.
 The softwate should be able to convert video to audio.
 The softwate must show details of supporting language.
+
+Development tools
+Language : Python, Typescript.
+Deep Learning Model: Whisper (OpenAI)
+User Interface:
+For Front-end: Next Js
+For Back-end: Flask
+Version Control: Git
+Monorepo: Turborepo
+Mobile app: React Native (under development)
