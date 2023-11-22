@@ -30,14 +30,4 @@ Version Control: Git
 Monorepo: Turborepo
 Mobile app: React Native (under development)
 
-Contributions:
-Functional/Nonfunctional Requirements:
-Md Sayem mia and Abid Hasan
-Use case and Sequential Diagram: Md. Abid Hasan
-Class Diagram: Md. Sayem Mia
-Deep Learning Model: Md. Sayem mia
-Flask Framework Helper Functions: Md. Abid Hasan
-List of Supported Language: Md. Abid Hasan
-Front end UI: Md. Sayem Mia
-
 The end
